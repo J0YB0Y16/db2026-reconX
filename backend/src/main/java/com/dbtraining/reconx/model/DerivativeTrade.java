@@ -50,8 +50,7 @@ public final class DerivativeTrade implements TradeType {
 
     /** Simplified notional = strike * quantity in the trade currency. */
     @Override public Money notional() {
-        // TODO(TICKET-ADV022): return new Money(strike * quantity, currency).
-        throw new UnsupportedOperationException("TICKET-ADV022");
+        return new Money(strike.multiply(quantity), currency);
     }
 
     public String underlying()       { return underlying; }
@@ -64,17 +63,16 @@ public final class DerivativeTrade implements TradeType {
     public long counterpartyId()     { return counterpartyId; }
 
     @Override public boolean equals(Object o) {
-        // TODO(TICKET-ADV028): pattern-match on DerivativeTrade and compare tradeRef.
-        throw new UnsupportedOperationException("TICKET-ADV028");
+        if (this == o) return true;
+        if (!(o instanceof DerivativeTrade other)) return false;
+        return Objects.equals(this.tradeRef, other.tradeRef);
     }
     @Override public int hashCode() {
-        // TODO(TICKET-ADV028): hash from tradeRef.
-        throw new UnsupportedOperationException("TICKET-ADV028");
+        return Objects.hashCode(tradeRef);
     }
 
     @Override public String toString() {
-        // TODO(TICKET-ADV030): "DerivativeTrade[ref=..., TYPE UNDERLYING on date, strike=... CCY, qty=..., expiry=..., side=...]"
-        throw new UnsupportedOperationException("TICKET-ADV030");
+        return "DerivativeTrade[ref=" + tradeRef + ", " + optionType + " " + underlying + " on " + tradeDate + ", strike=" + strike + " " + currency + ", qty=" + quantity + ", expiry=" + expiry + ", side=" + side + "]";
     }
 
     public static final class Builder {
@@ -98,13 +96,29 @@ public final class DerivativeTrade implements TradeType {
         public Builder tradeDate(LocalDate v)      { this.tradeDate = v; return this; }
         public Builder counterpartyId(long v)      { this.counterpartyId = v; return this; }
 
+        /**
+         * Build the immutable {@link DerivativeTrade}, validating that every required
+         * field is set and that all invariants hold.
+         *
+         * @return a fully-constructed, validated {@code DerivativeTrade} — never {@code null}.
+         * @throws NullPointerException  if any required field was not set.
+         * @throws IllegalStateException if {@code strike} or {@code quantity} is not strictly positive,
+         *                               or {@code expiry} is before {@code tradeDate}.
+         */
         public DerivativeTrade build() {
-            // TODO(TICKET-ADV022):
-            //   - Objects.requireNonNull each required field.
-            //   - strike and quantity must be > 0.
-            //   - expiry must not be before tradeDate.
-            //   - return new DerivativeTrade(this).
-            throw new UnsupportedOperationException("TICKET-ADV022");
+            Objects.requireNonNull(tradeRef, "tradeRef");
+            Objects.requireNonNull(underlying, "underlying");
+            Objects.requireNonNull(strike, "strike");
+            Objects.requireNonNull(quantity, "quantity");
+            Objects.requireNonNull(expiry, "expiry");
+            Objects.requireNonNull(optionType, "optionType");
+            Objects.requireNonNull(currency, "currency");
+            Objects.requireNonNull(side, "side");
+            Objects.requireNonNull(tradeDate, "tradeDate");
+            if (strike.signum() <= 0) throw new IllegalStateException("strike must be > 0");
+            if (quantity.signum() <= 0) throw new IllegalStateException("quantity must be > 0");
+            if (expiry.isBefore(tradeDate)) throw new IllegalStateException("expiry cannot be before tradeDate");
+            return new DerivativeTrade(this);
         }
     }
 }

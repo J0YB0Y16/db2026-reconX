@@ -37,17 +37,26 @@ public enum ReconciliationRule {
 
     /**
      * Decide whether two prices/quantities are within this rule's tolerance.
+     *
+     * @param internalPrice the price on our side
+     * @param internalQty   the quantity on our side
+     * @param externalPrice the price from the counterparty
+     * @param externalQty   the quantity from the counterparty
      * @return true if BOTH the price diff (as %) AND the qty diff (as abs)
      *         are within tolerance.
      */
     public boolean matches(BigDecimal internalPrice, BigDecimal internalQty,
                            BigDecimal externalPrice, BigDecimal externalQty) {
-        // TODO(TICKET-ADV026):
-        //   1. Compute |internalPrice - externalPrice| as priceDiff.
-        //   2. priceDiffPct = priceDiff / internalPrice (guard divide-by-zero).
-        //   3. qtyDiff = |internalQty - externalQty|.
-        //   4. Return true iff priceDiffPct <= priceTolerancePct AND
-        //      qtyDiff <= qtyToleranceAbs.
-        throw new UnsupportedOperationException("TICKET-ADV026");
+        BigDecimal priceDiff = internalPrice.subtract(externalPrice).abs();
+        BigDecimal priceDiffPct = BigDecimal.ZERO;
+        if (internalPrice.compareTo(BigDecimal.ZERO) != 0) {
+            priceDiffPct = priceDiff.divide(internalPrice.abs(), 8, java.math.RoundingMode.HALF_UP);
+        } else if (priceDiff.compareTo(BigDecimal.ZERO) != 0) {
+            return false;
+        }
+
+        BigDecimal qtyDiff = internalQty.subtract(externalQty).abs();
+
+        return priceDiffPct.compareTo(priceTolerancePct) <= 0 && qtyDiff.compareTo(qtyToleranceAbs) <= 0;
     }
 }

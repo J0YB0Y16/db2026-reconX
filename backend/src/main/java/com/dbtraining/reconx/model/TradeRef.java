@@ -29,6 +29,12 @@ public record TradeRef(String value) {
         }
     }
 
+    /**
+     * Creates a TradeRef from a string value.
+     *
+     * @param value the trade reference string
+     * @return a new TradeRef instance
+     */
     public static TradeRef of(String value) {
         return new TradeRef(value);
     }

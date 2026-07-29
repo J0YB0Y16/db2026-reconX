@@ -31,23 +31,49 @@ public record Money(BigDecimal amount, Currency currency) {
         }
     }
 
+    /**
+     * Creates a new Money instance from a string amount and currency code.
+     *
+     * @param amount       the string representation of the amount
+     * @param currencyCode the ISO-4217 currency code
+     * @return a new Money instance
+     */
     public static Money of(String amount, String currencyCode) {
         return new Money(new BigDecimal(amount), Currency.getInstance(currencyCode));
     }
 
+    /**
+     * Creates a new Money instance from a BigDecimal amount and currency code.
+     *
+     * @param amount       the amount
+     * @param currencyCode the ISO-4217 currency code
+     * @return a new Money instance
+     */
     public static Money of(BigDecimal amount, String currencyCode) {
         return new Money(amount, Currency.getInstance(currencyCode));
     }
 
-    /** Add another Money of the same currency. Throws on currency mismatch. */
+    /**
+     * Add another Money of the same currency.
+     *
+     * @param other the money to add
+     * @return a new Money instance representing the sum
+     * @throws IllegalArgumentException if the currencies differ
+     */
     public Money plus(Money other) {
-        // TODO(TICKET-ADV024): validate same currency, then return a new Money
-        //                     whose amount = this.amount + other.amount.
-        throw new UnsupportedOperationException("TICKET-ADV024");
+        if (!this.currency.equals(other.currency)) {
+            throw new IllegalArgumentException("Cannot add Money of different currencies");
+        }
+        return new Money(this.amount.add(other.amount), this.currency);
     }
 
+    /**
+     * Multiply this money by a scalar.
+     *
+     * @param multiplier the scalar to multiply by
+     * @return a new Money instance
+     */
     public Money times(BigDecimal multiplier) {
-        // TODO(TICKET-ADV024): return a new Money whose amount = this.amount * multiplier.
-        throw new UnsupportedOperationException("TICKET-ADV024");
+        return new Money(this.amount.multiply(multiplier), this.currency);
     }
 }
