@@ -1,5 +1,5 @@
 -- ============================================================================
--- TICKET-ADV010 — VWAP per instrument per day (window function)
+-- TICKET-ADV010 — VWAP per instrument per day (window function) .. Completed by Ankita
 -- ============================================================================
 SELECT DISTINCT
     t.instrument_id,
