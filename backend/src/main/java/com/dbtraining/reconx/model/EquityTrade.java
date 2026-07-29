@@ -75,3 +75,5 @@ public final class EquityTrade implements TradeType {
         }
     }
 }
+
+// complete ticket 19
