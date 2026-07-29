@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Objects;
 
-/**
+/**Completed
  * ============================================================================
  * Immutable value object: Money
  *
