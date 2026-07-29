@@ -1,0 +1,6 @@
+# .github/CODEOWNERS
+*               @J0YB0Y16
+backend/        @J0YB0Y16 @GarvJuneja977
+frontend/       @J0YB0Y16 @hasinim05
+db/             @J0YB0Y16 @Ankita-Venugopal
+.github/        @J0YB0Y16
