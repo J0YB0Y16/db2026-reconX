@@ -14,7 +14,7 @@ ORDER BY t.trade_date DESC, t.instrument_id;
 
 
 -- ============================================================================
--- TICKET-ADV011 — Recursive CTE: trade lifecycle (execution -> settlement
+-- Recursive CTE: trade lifecycle (execution -> settlement
 --                -> recon_break -> resolution)
 -- ============================================================================
 WITH RECURSIVE trade_lifecycle AS (
@@ -52,7 +52,7 @@ ORDER BY trade_id, step;
 
 
 -- ============================================================================
--- ADV008 — REFRESH the daily-summary materialised view (concurrent so it can
+-- TICKET-ADV008 — REFRESH the daily-summary materialised view (concurrent so it can
 --         run while the dashboard is reading it)
 -- ============================================================================
 REFRESH MATERIALIZED VIEW CONCURRENTLY mv_daily_recon_summary;
