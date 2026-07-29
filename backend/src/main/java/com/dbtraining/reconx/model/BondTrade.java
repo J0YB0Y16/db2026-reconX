@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Objects;
 
-/**
+/**Completed 
  * ============================================================================
  * TICKET-ADV021 — BondTrade with Builder pattern
  *
@@ -68,10 +68,13 @@ public final class BondTrade implements TradeType {
         throw new UnsupportedOperationException("TICKET-ADV028");
     }
 
-    @Override public String toString() {
-        // TODO(TICKET-ADV030): "BondTrade[ref=..., isin=..., face=... CCY, coupon=..., maturity=..., side=...]"
-        throw new UnsupportedOperationException("TICKET-ADV030");
-    }
+    @Override
+public String toString() {
+    // NOTE: Intentionally omits counterpartyId to maintain PII safety across logs.
+    return "BondTrade[ref=%s, isin=%s, face=%s %s, coupon=%s, maturity=%s, side=%s]"
+            .formatted(tradeRef, isin, faceValue.toPlainString(), currency.getCurrencyCode(),
+                       couponRate.toPlainString(), maturityDate, side);
+}
 
     public static final class Builder {
         private TradeRef tradeRef;
