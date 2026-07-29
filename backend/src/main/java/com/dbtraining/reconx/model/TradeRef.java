@@ -3,7 +3,7 @@ package com.dbtraining.reconx.model;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-/**
+/**Completed
  * ============================================================================
  * Immutable value object: TradeRef (natural key for a trade)
  *

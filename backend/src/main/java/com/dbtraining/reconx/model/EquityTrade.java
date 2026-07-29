@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Objects;
 
-/**
+/**Completed
  * ============================================================================
  * TICKET-ADV019 — EquityTrade with Builder pattern
  *
