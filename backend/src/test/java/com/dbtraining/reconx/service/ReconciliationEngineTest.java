@@ -17,29 +17,77 @@ class ReconciliationEngineTest {
 
     private final ReconciliationEngine engine = new ReconciliationEngine();
 
+    @org.junit.jupiter.api.DisplayName("exact match on price and qty returns MATCHED")
     @Test
     void testReconcile_exactMatch_returnsMatched() {
-        // TODO(TICKET-ADV040): two identical EquityTrades + EXACT rule -> one ReconResult with status MATCHED.
-        org.junit.jupiter.api.Assertions.fail("TICKET-ADV040 not implemented yet");
+        // given
+        EquityTrade internal = equity("EQU-20260603-0001", "100.00", "1000");
+        EquityTrade external = equity("EQU-20260603-0001", "100.00", "1000");
+
+        // when
+        List<ReconResult> out = engine.reconcile(List.of(internal), List.of(external), ReconciliationRule.EXACT);
+
+        // then
+        assertThat(out).hasSize(1);
+        assertThat(out.get(0).status()).isEqualTo(ReconResult.Status.MATCHED);
     }
 
-    @Test
-    void testReconcile_priceTolerance_withinThreshold() {
-        // TODO(TICKET-ADV041): prices 100.00 vs 100.50 + PRICE_TOLERANCE_1PCT rule -> status MATCHED.
-        org.junit.jupiter.api.Assertions.fail("TICKET-ADV041 not implemented yet");
+    @org.junit.jupiter.params.ParameterizedTest(name = "price diff {0} stays within 1% tolerance -> MATCHED")
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"0.10", "0.50", "0.99"})
+    void testReconcile_priceTolerance_withinThreshold(String diff) {
+        // given
+        BigDecimal basePrice = new BigDecimal("100.00");
+        EquityTrade internal = equity("EQU-20260603-0002", basePrice.toString(), "1000");
+        EquityTrade external = equity("EQU-20260603-0002", basePrice.add(new BigDecimal(diff)).toString(), "1000");
+
+        // when
+        List<ReconResult> out = engine.reconcile(List.of(internal), List.of(external), ReconciliationRule.PRICE_TOLERANCE_1PCT);
+
+        // then
+        assertThat(out).hasSize(1);
+        assertThat(out.get(0).status()).isEqualTo(ReconResult.Status.MATCHED);
     }
 
     @Test
     void testReconcile_missingCounterpartyTrade_returnsBreak() {
-        // TODO(TICKET-ADV042): internal trade with no external counterpart -> status BREAK,
-        //                     discrepancyType = "MISSING_EXTERNAL".
-        org.junit.jupiter.api.Assertions.fail("TICKET-ADV042 not implemented yet");
+        // given
+        EquityTrade internal = equity("EQU-20260603-0003", "100.00", "1000");
+
+        // when
+        List<ReconResult> out = engine.reconcile(List.of(internal), List.of(), ReconciliationRule.EXACT);
+
+        // then
+        assertThat(out).hasSize(1);
+        assertThat(out.get(0).status()).isEqualTo(ReconResult.Status.BREAK);
+        assertThat(out.get(0).discrepancyType()).isEqualTo("MISSING_EXTERNAL");
     }
 
     @Test
     void testReconcile_emptyInternal_returnsEmpty() {
-        // TODO(TICKET-ADV040): empty internal + empty external -> reconcile returns an empty list.
-        org.junit.jupiter.api.Assertions.fail("TICKET-ADV040 not implemented yet");
+        // given & when
+        List<ReconResult> out = engine.reconcile(List.of(), List.of(), ReconciliationRule.EXACT);
+        // then
+        assertThat(out).isEmpty();
+    }
+    
+    @Test
+    void testReconcile_allMismatched_reportsInSummary() {
+        // given
+        EquityTrade i1 = equity("TRD-1", "100", "1000");
+        EquityTrade i2 = equity("TRD-2", "100", "1000");
+        EquityTrade i3 = equity("TRD-3", "100", "1000");
+        EquityTrade e1 = equity("TRD-1", "200", "1000");
+        EquityTrade e2 = equity("TRD-2", "200", "1000");
+        EquityTrade e3 = equity("TRD-3", "200", "1000");
+
+        // when
+        List<ReconResult> results = engine.reconcile(List.of(i1, i2, i3), List.of(e1, e2, e3), ReconciliationRule.EXACT);
+        
+        // then
+        ReconSummary summary = results.stream().collect(new ReconSummaryCollector());
+        assertThat(summary.matched()).isEqualTo(0);
+        assertThat(summary.broken()).isEqualTo(3);
+        assertThat(summary.total()).isEqualTo(3);
     }
 
     private EquityTrade equity(String ref, String price, String qty) {

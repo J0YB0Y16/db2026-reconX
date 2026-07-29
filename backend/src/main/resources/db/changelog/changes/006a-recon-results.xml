@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <changeSet id="006a-create-recon-results" author="trainer">
+    <preConditions onFail="MARK_RAN">
+        <not>
+        <tableExists tableName="recon_results"/>
+        </not></preConditions>
+        <createTable tableName="recon_results">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="trade_ref" type="VARCHAR(30)"><constraints nullable="false"/></column>
+            <column name="status" type="VARCHAR(20)"><constraints nullable="false"/></column>
+            <column name="discrepancy_type" type="VARCHAR(30)"/>
+            <column name="details" type="TEXT"/>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="recon_results"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
