@@ -59,7 +59,7 @@ public final class BondTrade implements TradeType {
     public Side side()                { return side; }
     public long counterpartyId()      { return counterpartyId; }
 
-    //TICKET ADV-028
+    // ADV-028
 
     @Override public boolean equals(Object o) {
         return (o instanceof BondTrade other) && tradeRef.equals(other.tradeRef);
