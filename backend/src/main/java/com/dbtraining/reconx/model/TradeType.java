@@ -3,7 +3,7 @@ package com.dbtraining.reconx.model;
 import java.time.LocalDate;
 import java.util.Comparator;
 
-/**
+/**Completed 
  * ============================================================================
  * TICKET-ADV018 — Sealed interface TradeType
  *
@@ -55,3 +55,7 @@ public sealed interface TradeType
 
     enum AssetClass { EQUITY, FX, BOND, DERIVATIVE }
 }
+
+
+
+// completed ticket ADV018 :)
