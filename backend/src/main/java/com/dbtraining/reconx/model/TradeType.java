@@ -3,7 +3,7 @@ package com.dbtraining.reconx.model;
 import java.time.LocalDate;
 import java.util.Comparator;
 
-/**
+/**Completed 
  * ============================================================================
  * TICKET-ADV018 — Sealed interface TradeType
  *
