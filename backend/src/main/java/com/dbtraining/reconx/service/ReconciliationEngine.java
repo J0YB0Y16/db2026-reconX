@@ -57,22 +57,38 @@ public class ReconciliationEngine {
      * combine into a single result list. Caller passes one external feed per
      * counterparty (typical real-world shape).
      */
-    public CompletableFuture<List<ReconResult>> reconcileByCounterparty(
+      public CompletableFuture<List<ReconResult>> reconcileByCounterparty(
             Map<Long, List<TradeType>> internalByCp,
             Map<Long, List<TradeType>> externalByCp,
             ReconciliationRule rule) {
-        // TODO(TICKET-ADV037): for each counterparty key in internalByCp launch a
-        //   CompletableFuture.supplyAsync(() -> reconcile(...)). Combine via
-        //   CompletableFuture.allOf(...).thenApply(v -> futures.stream()
-        //       .flatMap(f -> f.join().stream()).toList()).
-        throw new UnsupportedOperationException("TICKET-ADV037");
+        if (internalByCp == null || internalByCp.isEmpty()) {
+            return CompletableFuture.completedFuture(List.of());
+        }
+        Map<Long, List<TradeType>> ext = externalByCp == null ? Map.of() : externalByCp;
+        List<CompletableFuture<List<ReconResult>>> futures = internalByCp.entrySet().stream()
+                .map(e -> CompletableFuture.supplyAsync(
+                        () -> reconcile(e.getValue(), ext.getOrDefault(e.getKey(), List.of()), rule)))
+                .toList();
+        return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
+                .thenApply(v -> futures.stream()
+                        .flatMap(f -> f.join().stream())
+                        .collect(Collectors.toCollection(ArrayList::new)));
     }
 
     private ReconResult matchOne(TradeType internal, TradeType external, ReconciliationRule rule) {
-        // TODO(TICKET-ADV033): if external is null return ReconResult.breakResult(ref, "MISSING_EXTERNAL", ...).
-        //   Otherwise pull priceQty() for both sides, compare via rule.matches(...),
-        //   return ReconResult.matched(ref) or breakResult(ref, "VALUE_MISMATCH", details).
-        throw new UnsupportedOperationException("TICKET-ADV033");
+        String ref = internal.tradeRef().value();
+        if (external == null) {
+            return ReconResult.breakResult(ref, "MISSING_EXTERNAL",
+                    "no external trade found for " + ref);
+        }
+        BigDecimal[] in  = priceQty(internal);
+        BigDecimal[] out = priceQty(external);
+        if (rule.matches(in[0], in[1], out[0], out[1])) {
+            return ReconResult.matched(ref);
+        }
+        return ReconResult.breakResult(ref, "VALUE_MISMATCH",
+                "internal price=%s qty=%s vs external price=%s qty=%s"
+                        .formatted(in[0], in[1], out[0], out[1]));
     }
 
     /** TICKET-ADV018 — exhaustive switch over the sealed hierarchy. */
