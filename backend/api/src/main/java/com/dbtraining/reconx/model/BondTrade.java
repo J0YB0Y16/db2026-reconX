@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.Currency;
 import java.util.Objects;
 
-/**
+/**Completed 
  * ============================================================================
  * TICKET-ADV021 — BondTrade with Builder pattern
  *
@@ -44,12 +44,7 @@ public final class BondTrade implements TradeType {
     @Override public TradeRef tradeRef()     { return tradeRef; }
     @Override public LocalDate tradeDate()   { return tradeDate; }
     @Override public AssetClass assetClass() { return AssetClass.BOND; }
-
-    /** Notional = faceValue in the bond's currency. */
-    @Override public Money notional() {
-        // TODO(TICKET-ADV021): return new Money(faceValue, currency).
-        throw new UnsupportedOperationException("TICKET-ADV021");
-    }
+    @Override public Money notional()        { return new Money(faceValue, currency); }
 
     public String isin()              { return isin; }
     public BigDecimal faceValue()     { return faceValue; }
@@ -59,19 +54,22 @@ public final class BondTrade implements TradeType {
     public Side side()                { return side; }
     public long counterpartyId()      { return counterpartyId; }
 
+    // ADV-028
+
     @Override public boolean equals(Object o) {
-        // TODO(TICKET-ADV028): pattern-match on BondTrade and compare tradeRef.
-        throw new UnsupportedOperationException("TICKET-ADV028");
+        return (o instanceof BondTrade other) && tradeRef.equals(other.tradeRef);
     }
     @Override public int hashCode() {
-        // TODO(TICKET-ADV028): hash from tradeRef.
-        throw new UnsupportedOperationException("TICKET-ADV028");
+        return tradeRef.hashCode();
     }
 
-    @Override public String toString() {
-        // TODO(TICKET-ADV030): "BondTrade[ref=..., isin=..., face=... CCY, coupon=..., maturity=..., side=...]"
-        throw new UnsupportedOperationException("TICKET-ADV030");
-    }
+    @Override
+public String toString() {
+    // NOTE: Intentionally omits counterpartyId to maintain PII safety across logs.
+    return "BondTrade[ref=%s, isin=%s, face=%s %s, coupon=%s, maturity=%s, side=%s]"
+            .formatted(tradeRef, isin, faceValue.toPlainString(), currency.getCurrencyCode(),
+                       couponRate.toPlainString(), maturityDate, side);
+}
 
     public static final class Builder {
         private TradeRef tradeRef;
@@ -93,11 +91,17 @@ public final class BondTrade implements TradeType {
         public Builder counterpartyId(long v)      { this.counterpartyId = v; return this; }
 
         public BondTrade build() {
-            // TODO(TICKET-ADV021):
-            //   - Objects.requireNonNull each required field.
-            //   - maturityDate must not be before tradeDate (IllegalStateException otherwise).
-            //   - return new BondTrade(this).
-            throw new UnsupportedOperationException("TICKET-ADV021");
+            Objects.requireNonNull(tradeRef,     "tradeRef");
+            Objects.requireNonNull(isin,         "isin");
+            Objects.requireNonNull(faceValue,    "faceValue");
+            Objects.requireNonNull(couponRate,   "couponRate");
+            Objects.requireNonNull(maturityDate, "maturityDate");
+            Objects.requireNonNull(currency,     "currency");
+            Objects.requireNonNull(side,         "side");
+            Objects.requireNonNull(tradeDate,    "tradeDate");
+            if (maturityDate.isBefore(tradeDate))
+                throw new IllegalStateException("maturityDate cannot be before tradeDate");
+            return new BondTrade(this);
         }
     }
 }

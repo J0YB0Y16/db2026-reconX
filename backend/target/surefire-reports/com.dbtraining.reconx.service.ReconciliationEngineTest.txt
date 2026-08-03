@@ -1,7 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: com.dbtraining.reconx.service.ReconciliationEngineTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! -- in com.dbtraining.reconx.service.ReconciliationEngineTest
+=======
+Tests run: 4, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.032 s <<< FAILURE! -- in com.dbtraining.reconx.service.ReconciliationEngineTest
+>>>>>>> origin/develop
 com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_missingCounterpartyTrade_returnsBreak -- Time elapsed: 0.003 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: TICKET-ADV042 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
@@ -29,7 +33,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV041 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_emptyInternal_returnsEmpty -- Time elapsed: 0.002 s <<< FAILURE!
+=======
+com.dbtraining.reconx.service.ReconciliationEngineTest.testReconcile_emptyInternal_returnsEmpty -- Time elapsed: 0.007 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV040 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)

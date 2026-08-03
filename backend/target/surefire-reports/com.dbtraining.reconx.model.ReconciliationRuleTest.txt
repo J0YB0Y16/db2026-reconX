@@ -1,8 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.dbtraining.reconx.model.ReconciliationRuleTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 7, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.281 s <<< FAILURE! -- in com.dbtraining.reconx.model.ReconciliationRuleTest
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[1] -- Time elapsed: 0.078 s <<< FAILURE!
+=======
+Tests run: 7, Failures: 7, Errors: 0, Skipped: 0, Time elapsed: 0.408 s <<< FAILURE! -- in com.dbtraining.reconx.model.ReconciliationRuleTest
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[1] -- Time elapsed: 0.101 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
@@ -36,7 +41,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[2] -- Time elapsed: 0.003 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[2] -- Time elapsed: 0.005 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
@@ -70,7 +79,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[3] -- Time elapsed: 0.005 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[3] -- Time elapsed: 0.004 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
@@ -104,7 +117,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[4] -- Time elapsed: 0.003 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[4] -- Time elapsed: 0.004 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
@@ -138,7 +155,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[5] -- Time elapsed: 0.003 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[5] -- Time elapsed: 0.006 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
@@ -172,7 +193,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[6] -- Time elapsed: 0.003 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[6] -- Time elapsed: 0.005 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
@@ -206,7 +231,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
+<<<<<<< HEAD
 com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[7] -- Time elapsed: 0.002 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.ReconciliationRuleTest.matches(ReconciliationRule, BigDecimal, BigDecimal, BigDecimal, BigDecimal, boolean)[7] -- Time elapsed: 0.003 s <<< FAILURE!
+>>>>>>> origin/develop
 org.opentest4j.AssertionFailedError: TICKET-ADV026 not implemented yet
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
 	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
