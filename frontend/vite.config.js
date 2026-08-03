@@ -1,4 +1,4 @@
-// TICKET-ADV111 — Vite config + path aliases (@/components, @/hooks, ...)
+// TICKET-ADV111 — Vite config + path aliases (@/components, @/hooks, ...) done 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
