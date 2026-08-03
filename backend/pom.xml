@@ -29,8 +29,17 @@
     <groupId>com.dbtraining</groupId>
     <artifactId>reconx</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>reconx</name>
     <description>ReconX — Enterprise Trade Reconciliation Platform (Advanced Track)</description>
+
+    <modules>
+        <module>api</module>
+        <module>common</module>
+        <module>domain</module>
+        <module>repository</module>
+        <module>service</module>
+    </modules>
 
     <properties>
         <java.version>25</java.version>
