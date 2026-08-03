@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dbtraining.reconx.model.EquityTradeTest" time="0.126" tests="3" errors="0" skipped="0" failures="3">
+=======
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dbtraining.reconx.model.EquityTradeTest" time="0.099" tests="3" errors="0" skipped="0" failures="3">
+>>>>>>> origin/develop
 =======
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dbtraining.reconx.model.EquityTradeTest" time="0.099" tests="3" errors="0" skipped="0" failures="3">
 >>>>>>> origin/develop
@@ -20,8 +24,14 @@
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Microsoft\jdk-25.0.3.9-hotspot\bin"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="sun.java.command" value="C:\Users\Ankita\AppData\Local\Temp\surefire15517964094042243255\surefirebooter-20260803124452596_3.jar C:\Users\Ankita\AppData\Local\Temp\surefire15517964094042243255 2026-08-03T12-44-52_418-jvmRun1 surefire-20260803124452596_1tmp surefire_0-20260803124452596_2tmp"/>
     <property name="jdk.debug" value="release"/>
+=======
+    <property name="sun.java.command" value="C:\Users\Ankita\AppData\Local\Temp\surefire187043627305818093\surefirebooter-20260729172904475_3.jar C:\Users\Ankita\AppData\Local\Temp\surefire187043627305818093 2026-07-29T17-29-04_207-jvmRun1 surefire-20260729172904475_1tmp surefire_0-20260729172904475_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="EquityTradeTest"/>
+>>>>>>> origin/develop
 =======
     <property name="sun.java.command" value="C:\Users\Ankita\AppData\Local\Temp\surefire187043627305818093\surefirebooter-20260729172904475_3.jar C:\Users\Ankita\AppData\Local\Temp\surefire187043627305818093 2026-07-29T17-29-04_207-jvmRun1 surefire-20260729172904475_1tmp surefire_0-20260729172904475_2tmp"/>
     <property name="jdk.debug" value="release"/>
@@ -35,6 +45,10 @@
     <property name="java.version.date" value="2026-04-21"/>
     <property name="java.home" value="C:\Program Files\Microsoft\jdk-25.0.3.9-hotspot"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <property name="jacoco.skip" value="true"/>
+>>>>>>> origin/develop
 =======
     <property name="jacoco.skip" value="true"/>
 >>>>>>> origin/develop
@@ -45,7 +59,11 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="surefire.real.class.path" value="C:\Users\Ankita\AppData\Local\Temp\surefire15517964094042243255\surefirebooter-20260803124452596_3.jar"/>
+=======
+    <property name="surefire.real.class.path" value="C:\Users\Ankita\AppData\Local\Temp\surefire187043627305818093\surefirebooter-20260729172904475_3.jar"/>
+>>>>>>> origin/develop
 =======
     <property name="surefire.real.class.path" value="C:\Users\Ankita\AppData\Local\Temp\surefire187043627305818093\surefirebooter-20260729172904475_3.jar"/>
 >>>>>>> origin/develop
@@ -79,7 +97,11 @@
     <property name="java.class.version" value="69.0"/>
   </properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <testcase name="equality_byTradeRef" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.064">
+=======
+  <testcase name="equality_byTradeRef" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.047">
+>>>>>>> origin/develop
 =======
   <testcase name="equality_byTradeRef" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.047">
 >>>>>>> origin/develop
@@ -91,6 +113,7 @@
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 ]]></failure>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/dbtraining/reconx/model/EquityTradeTest with JaCoCo 0.8.12.202403310830/dbfb6f2.
 	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:94)
@@ -421,6 +444,8 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 ]]></system-err>
 =======
 >>>>>>> origin/develop
+=======
+>>>>>>> origin/develop
   </testcase>
   <testcase name="builder_buildsWhenAllRequiredPresent" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.003">
     <failure message="TICKET-ADV019 not implemented yet" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: TICKET-ADV019 not implemented yet
@@ -433,7 +458,11 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 ]]></failure>
   </testcase>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <testcase name="builder_missingPrice_throws" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.002">
+=======
+  <testcase name="builder_missingPrice_throws" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.005">
+>>>>>>> origin/develop
 =======
   <testcase name="builder_missingPrice_throws" classname="com.dbtraining.reconx.model.EquityTradeTest" time="0.005">
 >>>>>>> origin/develop

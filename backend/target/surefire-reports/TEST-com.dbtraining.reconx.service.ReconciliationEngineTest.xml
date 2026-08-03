@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dbtraining.reconx.service.ReconciliationEngineTest" time="0.018" tests="4" errors="0" skipped="0" failures="4">
+=======
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dbtraining.reconx.service.ReconciliationEngineTest" time="0.032" tests="4" errors="0" skipped="0" failures="4">
+>>>>>>> origin/develop
 =======
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dbtraining.reconx.service.ReconciliationEngineTest" time="0.032" tests="4" errors="0" skipped="0" failures="4">
 >>>>>>> origin/develop
@@ -20,7 +24,11 @@
     <property name="user.country" value="IN"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Microsoft\jdk-25.0.3.9-hotspot\bin"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="sun.java.command" value="C:\Users\Ankita\AppData\Local\Temp\surefire15517964094042243255\surefirebooter-20260803124452596_3.jar C:\Users\Ankita\AppData\Local\Temp\surefire15517964094042243255 2026-08-03T12-44-52_418-jvmRun1 surefire-20260803124452596_1tmp surefire_0-20260803124452596_2tmp"/>
+=======
+    <property name="sun.java.command" value="C:\Users\Ankita\AppData\Local\Temp\surefire13749783679544175456\surefirebooter-20260729172520412_3.jar C:\Users\Ankita\AppData\Local\Temp\surefire13749783679544175456 2026-07-29T17-25-18_946-jvmRun1 surefire-20260729172520412_1tmp surefire_0-20260729172520412_2tmp"/>
+>>>>>>> origin/develop
 =======
     <property name="sun.java.command" value="C:\Users\Ankita\AppData\Local\Temp\surefire13749783679544175456\surefirebooter-20260729172520412_3.jar C:\Users\Ankita\AppData\Local\Temp\surefire13749783679544175456 2026-07-29T17-25-18_946-jvmRun1 surefire-20260729172520412_1tmp surefire_0-20260729172520412_2tmp"/>
 >>>>>>> origin/develop
@@ -39,7 +47,11 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="surefire.real.class.path" value="C:\Users\Ankita\AppData\Local\Temp\surefire15517964094042243255\surefirebooter-20260803124452596_3.jar"/>
+=======
+    <property name="surefire.real.class.path" value="C:\Users\Ankita\AppData\Local\Temp\surefire13749783679544175456\surefirebooter-20260729172520412_3.jar"/>
+>>>>>>> origin/develop
 =======
     <property name="surefire.real.class.path" value="C:\Users\Ankita\AppData\Local\Temp\surefire13749783679544175456\surefirebooter-20260729172520412_3.jar"/>
 >>>>>>> origin/develop
@@ -178,7 +190,11 @@ Caused by: java.lang.IllegalArgumentException: Unsupported class file major vers
 ]]></failure>
   </testcase>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <testcase name="testReconcile_emptyInternal_returnsEmpty" classname="com.dbtraining.reconx.service.ReconciliationEngineTest" time="0.002">
+=======
+  <testcase name="testReconcile_emptyInternal_returnsEmpty" classname="com.dbtraining.reconx.service.ReconciliationEngineTest" time="0.007">
+>>>>>>> origin/develop
 =======
   <testcase name="testReconcile_emptyInternal_returnsEmpty" classname="com.dbtraining.reconx.service.ReconciliationEngineTest" time="0.007">
 >>>>>>> origin/develop

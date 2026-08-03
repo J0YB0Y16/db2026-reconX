@@ -2,8 +2,13 @@
 Test set: com.dbtraining.reconx.model.EquityTradeTest
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.126 s <<< FAILURE! -- in com.dbtraining.reconx.model.EquityTradeTest
 com.dbtraining.reconx.model.EquityTradeTest.equality_byTradeRef -- Time elapsed: 0.064 s <<< FAILURE!
+=======
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.099 s <<< FAILURE! -- in com.dbtraining.reconx.model.EquityTradeTest
+com.dbtraining.reconx.model.EquityTradeTest.equality_byTradeRef -- Time elapsed: 0.047 s <<< FAILURE!
+>>>>>>> origin/develop
 =======
 Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.099 s <<< FAILURE! -- in com.dbtraining.reconx.model.EquityTradeTest
 com.dbtraining.reconx.model.EquityTradeTest.equality_byTradeRef -- Time elapsed: 0.047 s <<< FAILURE!
@@ -26,7 +31,11 @@ org.opentest4j.AssertionFailedError: TICKET-ADV019 not implemented yet
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 com.dbtraining.reconx.model.EquityTradeTest.builder_missingPrice_throws -- Time elapsed: 0.002 s <<< FAILURE!
+=======
+com.dbtraining.reconx.model.EquityTradeTest.builder_missingPrice_throws -- Time elapsed: 0.005 s <<< FAILURE!
+>>>>>>> origin/develop
 =======
 com.dbtraining.reconx.model.EquityTradeTest.builder_missingPrice_throws -- Time elapsed: 0.005 s <<< FAILURE!
 >>>>>>> origin/develop
