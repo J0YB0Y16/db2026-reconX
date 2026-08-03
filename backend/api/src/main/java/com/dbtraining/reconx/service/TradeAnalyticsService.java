@@ -1,6 +1,10 @@
 package com.dbtraining.reconx.service;
 
+import com.dbtraining.reconx.model.BondTrade;
+import com.dbtraining.reconx.model.DerivativeTrade;
 import com.dbtraining.reconx.model.EquityTrade;
+import com.dbtraining.reconx.model.FXTrade;
+import com.dbtraining.reconx.model.Side;
 import com.dbtraining.reconx.model.TradeType;
 import org.springframework.stereotype.Service;
 

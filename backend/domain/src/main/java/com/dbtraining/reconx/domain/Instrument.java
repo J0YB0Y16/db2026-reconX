@@ -34,10 +34,6 @@ public class Instrument {
     @Column(nullable = false, length = 3)
     private String currency;
 
-    /**
-     * JSONB metadata: tick size, lot size, exchange code, etc.
-     * On H2 (dev profile) this stores as a CLOB; on Postgres it's true JSONB.
-     */
     @Type(JsonBinaryType.class)
     @Column(columnDefinition = "jsonb")
     private Map<String, Object> metadata = new HashMap<>();

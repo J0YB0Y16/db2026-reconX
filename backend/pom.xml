@@ -34,11 +34,11 @@
     <description>ReconX — Enterprise Trade Reconciliation Platform (Advanced Track)</description>
 
     <modules>
-        <module>api</module>
         <module>common</module>
-        <module>domain</module>
-        <module>repository</module>
-        <module>service</module>
+    <module>domain</module>
+    <module>repository</module>
+    <module>service</module>
+    <module>api</module>
     </modules>
 
     <properties>

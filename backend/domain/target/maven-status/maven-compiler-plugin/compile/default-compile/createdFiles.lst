@@ -1,0 +1,5 @@
+com\dbtraining\reconx\domain\AssetClass.class
+com\dbtraining\reconx\domain\TradeStatus.class
+com\dbtraining\reconx\domain\Instrument.class
+com\dbtraining\reconx\domain\Trade.class
+com\dbtraining\reconx\domain\Counterparty.class
