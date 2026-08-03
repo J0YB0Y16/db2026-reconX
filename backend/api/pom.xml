@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- ============================================================================
- TICKET-ADV048 — Multi-module Maven (TRAINER COPY: single-module for runnability)
- WHAT:    The Advanced track teaches multi-module Maven (api/service/repository/
-          domain/common). In the TRAINER COPY we ship a single runnable module
-          to keep the answer key easy to boot. The trainer guide day4 shows the
-          multi-module split.
- HOW:     Standard Spring Boot 3 parent + java.version=25.
- WHY:     Students need a project that runs in one `mvn spring-boot:run`. Once
-          they pass Day 4 they can split this into modules and re-import.
- OBSERVE: `./mvnw spring-boot:run -Dspring-boot.run.profiles=dev` boots cleanly,
-          Liquibase migrations apply, /actuator/health returns UP.
- ============================================================================
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -20,37 +6,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0</version>
-        <relativePath/>
+        <groupId>com.dbtraining</groupId>
+        <artifactId>reconx</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.dbtraining</groupId>
-    <artifactId>reconx</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>reconx</name>
-    <description>ReconX — Enterprise Trade Reconciliation Platform (Advanced Track)</description>
-
-    <modules>
-        <module>common</module>
-    <module>domain</module>
-    <module>repository</module>
-    <module>service</module>
-    <module>api</module>
-    </modules>
-
-    <properties>
-        <java.version>25</java.version>
-        <mapstruct.version>1.6.2</mapstruct.version>
-        <jjwt.version>0.12.6</jjwt.version>
-        <testcontainers.version>1.20.3</testcontainers.version>
-        <hypersistence.version>3.9.0</hypersistence.version>
-    </properties>
+    <artifactId>reconx-api</artifactId>
+    <name>reconx-api</name>
+    <description>API layer for ReconX application</description>
 
     <dependencies>
-        <!-- Web + Validation (ADV063-ADV071) -->
+        <!-- Web + Validation -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -60,7 +27,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- Persistence (ADV050-ADV056) -->
+        <!-- Persistence & Database -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -79,21 +46,17 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- Hibernate Envers (ADV052) -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-envers</artifactId>
         </dependency>
-
-        <!-- JSONB mapping (ADV009, ADV051) -->
         <dependency>
             <groupId>io.hypersistence</groupId>
             <artifactId>hypersistence-utils-hibernate-63</artifactId>
             <version>${hypersistence.version}</version>
         </dependency>
 
-        <!-- Security + JWT (ADV072-ADV074) -->
+        <!-- Security + JWT -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -116,13 +79,13 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Kafka (ADV128-ADV136) -->
+        <!-- Messaging -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
-        <!-- Observability (ADV083-ADV097) -->
+        <!-- Observability & Caching -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -131,8 +94,6 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-
-        <!-- Caching (ADV081-ADV082) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
@@ -142,28 +103,24 @@
             <artifactId>caffeine</artifactId>
         </dependency>
 
-        <!-- Swagger / OpenAPI (ADV058) -->
+        <!-- Tooling & Utilities -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.6.0</version>
         </dependency>
-
-        <!-- MapStruct (ADV054) -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
-
-        <!-- Structured logging (ADV061) -->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-            <version>8.0</version>
+            <version>7.4</version>
         </dependency>
 
-        <!-- Test (ADV040-ADV045, ADV075-ADV079) -->
+        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -197,6 +154,23 @@
             <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Internal Modules -->
+        <dependency>
+            <groupId>com.dbtraining.reconx</groupId>
+            <artifactId>reconx-domain</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dbtraining.reconx</groupId>
+            <artifactId>reconx-service</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.dbtraining</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -204,6 +178,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -211,32 +196,22 @@
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${mapstruct.version}</version>
                         </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>0.2.0</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
-            </plugin>
-            <!-- ADV046 / ADV156 — JaCoCo coverage gate (>=85%) -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

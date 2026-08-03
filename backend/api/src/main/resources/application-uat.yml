@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: ${RECONX_UAT_DB_URL:jdbc:h2:mem:uatdb}
+    username: ${RECONX_UAT_DB_USER:sa}
+    password: ${RECONX_UAT_DB_PASSWORD:}
+    
