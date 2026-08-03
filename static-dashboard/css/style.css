@@ -42,7 +42,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  /* TICKET-ADV098 — page shell grid */
+  /* page shell grid */
   display: grid;
   grid-template-columns: 240px 1fr;
   grid-template-rows: 64px 1fr 40px;
@@ -79,6 +79,7 @@ body {
 .stat-card h3    { margin: 0; font-size: 13px; opacity: 0.7; }
 .stat-card p     { margin: var(--space-2) 0 0; font-size: 22px; font-weight: 700; }
 
+/* TICKET-ADV103 / ADV104 — live feed slide-in */
 /* File: static-dashboard/css/style.css — TICKET-ADV101 / TICKET-ADV102 live feed slide-in */
 #trade-feed { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-3); max-height: 50vh; overflow-y: auto; }
 .trade-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-2) var(--space-3); animation: slide-in 0.3s ease-out; }
@@ -88,3 +89,45 @@ body {
 
 button { padding: var(--space-1) var(--space-2); border: 1px solid var(--color-border); background: transparent; color: inherit; border-radius: var(--radius); cursor: pointer; }
 :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; }
+
+/* File: static-dashboard/css/style.css — table */
+.table-scroll {
+  /* CRITICAL: no overflow:hidden ANYWHERE up the ancestor chain, or
+     sticky header breaks. overflow:auto is fine. */
+  overflow: auto;
+  max-height: 60vh;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+.data-table th,
+.data-table td {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--color-bg-alt);
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
+.data-table thead th[aria-sort="ascending"]::after  { content: " ▲"; }
+.data-table thead th[aria-sort="descending"]::after { content: " ▼"; }
+
+.resize-handle {
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  cursor: col-resize;
+  background: var(--color-border);
+  margin-left: var(--space-2);
+  vertical-align: middle;
+}
