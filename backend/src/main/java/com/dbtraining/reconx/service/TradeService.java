@@ -62,6 +62,9 @@ public class TradeService {
         //   save, then:
         //     - metrics.incrementTradeCreated() + metrics.recordTradeValue(qty*price) — TICKET-ADV083
         //     - events.publish(new TradeEvent(... TRADE_CREATED ... actor ...)) — TICKET-ADV129
+        Trade saved = tradeRepo.save(t);
+        metrics.incrementTradeCreated();
+        metrics.recordTradeValue(saved.getQuantity().multiply(saved.getPrice()).doubleValue());
         throw new UnsupportedOperationException("TICKET-ADV064");
     }
 
