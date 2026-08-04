@@ -13,6 +13,11 @@
 spring:
   application:
     name: reconx
+
+  jmx:
+    enabled: true
+
+    
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev}
 
@@ -30,12 +35,14 @@ spring:
       hibernate.format_sql: true
       hibernate.jdbc.time_zone: UTC
 
-  # ADV081-ADV082 — Caffeine cache config; per-cache spec overrides the global one.
+  
+  # TICKET-ADV081-TICKET-ADV082 — Caffeine cache config; per-cache spec overrides the global one.
   cache:
     cache-names: instruments,counterparties
     caffeine:
       spec: maximumSize=500,expireAfterWrite=5m
 
+      
   # ADV128 — Kafka producer/consumer defaults. Topics are created at startup
   # by KafkaTopicsConfig (see com.dbtraining.reconx.kafka.KafkaTopicsConfig).
   kafka:

@@ -5,6 +5,7 @@ global:
 
 rule_files:
   - "alerts.yml"
+  
 
 scrape_configs:
 

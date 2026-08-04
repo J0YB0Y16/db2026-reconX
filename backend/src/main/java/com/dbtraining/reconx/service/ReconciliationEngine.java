@@ -5,7 +5,7 @@ import com.dbtraining.reconx.model.ReconciliationRule;
 import com.dbtraining.reconx.model.TradeType;
 import io.micrometer.core.annotation.Timed;
 import org.springframework.stereotype.Service;
-
+import io.micrometer.core.annotation.Timed;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;

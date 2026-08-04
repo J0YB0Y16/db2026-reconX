@@ -998,6 +998,7 @@ Trainer dashboard JSON entry (`monitoring/grafana/provisioning/dashboards/reconx
   "targets": [{ "expr": "sum(rate(trade_created_total[1m]))" }],
   "gridPos": { "h": 8, "w": 12, "x": 6, "y": 8 }
 }
+
 ```
 
 Cumulative-count alternative (panel options → calculation "Increase"):

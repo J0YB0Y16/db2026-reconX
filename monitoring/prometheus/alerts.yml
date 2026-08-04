@@ -11,6 +11,7 @@ groups:
           summary: "Open recon breaks > 50 for 5 min"
           description: "Current breaks: {{ $value }}"
 
+
       - alert: HighApiLatencyP95
         expr: |
           histogram_quantile(0.95,
